@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Audiowide", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f6f7fb, #dfe7f3);
+  overflow-x: hidden;
+}
+
+.game-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #317e5f;
+  margin-top: 5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  width: 80%;
+  margin: 50px auto;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.game-section {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s;
+  overflow: hidden;
+  
+}
+
+.game-section:hover {
+  transform: scale(1.02);
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #c9c6c6;
+  padding-bottom: 0.5rem;
+}
+
+.result {
+  font-size: 1.8rem;
+  color: #317e5f;
+  margin: 1rem 0;
+  transition: transform 0.3s;
+}
+
+.result_images {
+  display: flex;
+  gap: 8rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.result_images img {
+  width: 80px;
+  transition: transform 0.3s;
+}
+
+.user_result img {
+  transform: rotate(90deg);
+}
+
+.bot_result img {
+  transform: rotate(-90deg) rotateY(180deg);
+}
+
+.option_images {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.option_image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option_image img {
+  width: 45px;
+  pointer-events: none;
+  transition: transform 0.3s;
+}
+
+.option_image:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.option_image.active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.option_image p {
+  color: #317e5f;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  pointer-events: none;
+}
+
+.reset_button {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+  background: #317e5f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+  display: none;
+}
+
+.reset_button:hover {
+  background: #007844;
+}
+
+.winner {
+  transform: scale(1.2);
+  color: #317e5f;
+  animation: bounce 0.5s ease infinite;
+}
+
+.loser {
+  opacity: 0.5;
+  color: #dc3545;
+}
+
+.container.start .user_result {
+  transform-origin: left;
+  animation: userShake 0.7s ease infinite;
+}
+
+@keyframes userShake {
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+.container.start .bot_result {
+  transform-origin: right;
+  animation: botShake 0.7s ease infinite;
+}
+
+@keyframes botShake {
+  50% {
+    transform: rotate(-10deg);
+  }
+}
+
+.container.clash .user_result img {
+  animation: slideUser 0.5s ease forwards;
+}
+
+.container.clash .bot_result img {
+  animation: slideBot 0.5s ease forwards;
+}
+
+@keyframes slideUser {
+  100% { transform: translateX(40px) rotate(90deg); }
+}
+
+@keyframes slideBot {
+  100% { transform: translateX(-40px) rotate(-90deg) rotateY(180deg); }
+}
+
+@keyframes bounce {
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+.sidebar {
+  flex: 1;
+  background: #fff;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  color: #317e5f;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.leaderboard,
+.history {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.leaderboard li {
+  font-size: 1em;
+  margin: 10px 0;
+  color: #333;
+  text-align: center;
+}
+
+.history li {
+  background: #eee;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  color: #555;
+  text-align: center;
+}
+
+@media (max-width: 756px) {
+  .game-title {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .game-section {
+    width: 95%;
+    padding: 0.5rem;
+    margin-bottom: 10%;
+  }
+
+  .scoreboard {
+    font-size:  18px;
+
+  }
+
+  .result {
+    font-size: 1.2rem;
+  }
+
+  .result_images {
+    gap: 6rem;
+  }
+
+  .result_images img {
+    width: 50px;
+  }
+
+  .option_images {
+    gap: 5px;
+  }
+
+  .option_image img {
+    width: 35px;
+  }
+
+  .option_image p {
+    font-size: 0.8rem;
+  }
+
+  .reset_button {
+    font-size: 0.7rem;
+    padding: 0.3rem 1rem;
+  }
+
+  .sidebar {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .sidebar h2 {
+    font-size: 1.2rem;
+  }
+
+  .leaderboard li,
+  .history li {
+    font-size: 0.8em;
+    text-align: center;
+  }
+
+  .history li {
+    padding: 3px;
+  }
+}
